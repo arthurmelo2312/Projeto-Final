@@ -43,7 +43,7 @@ Este projeto foi desenvolvido para cadastrar artistas e músicas, organizar uma 
 
 ## Autor
 
-Projeto desenvolvido para fins de estudo e gerenciamento musical em PHP/MySQL por Arthur Franco.
+Projeto desenvolvido para fins de estudo e gerenciamento musical em HTML/CSS por Arthur Franco.
 
 ## Licença
 
