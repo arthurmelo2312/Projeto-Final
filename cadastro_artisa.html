@@ -1,0 +1,187 @@
+﻿
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Novo Artista - Sistema Musical</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="artist-page">
+
+    <div class="site-topbar"></div>
+
+    <main class="container">
+
+        <!-- Cabeçalho -->
+        <header class="page-heading">
+            <h1>
+                <span aria-hidden="true">🎙️</span>
+                Novo Artista
+            </h1>
+
+            <a href="menu.php" class="btn btn-back">
+                ← Voltar ao Menu
+            </a>
+        </header>
+
+        <div class="heading-divider"></div>
+
+        <!-- Formulário de cadastro -->
+        <form
+            class="artist-form"
+            action="#"
+            method="post"
+            enctype="multipart/form-data"
+        >
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="nome">
+                        Nome do Artista <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Ex: Djavan, Marisa Monte..."
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="genero">Gênero Musical</label>
+
+                    <input
+                        type="text"
+                        id="genero"
+                        name="genero"
+                        placeholder="Ex: MPB, Rock, Samba..."
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="pais">País</label>
+
+                    <input
+                        type="text"
+                        id="pais"
+                        name="pais"
+                        placeholder="Ex: Brasil, EUA..."
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="foto">Foto do Artista</label>
+
+                    <input
+                        type="file"
+                        id="foto"
+                        name="foto"
+                        accept="image/jpeg,image/png"
+                    >
+
+                    <small>JPG ou PNG · Máximo 5 MB</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <span aria-hidden="true">＋</span>
+                        Cadastrar
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+        <!-- Artistas cadastrados -->
+        <section class="artists-section">
+
+            <h2>
+                <span aria-hidden="true">📋</span>
+                Artistas Cadastrados
+            </h2>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Foto</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Gênero</th>
+                            <th scope="col">País</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="no-photo">
+                                    Sem<br>foto
+                                </span>
+                            </td>
+
+                            <td>Djavan</td>
+                            <td>MPB</td>
+                            <td>Brasil</td>
+
+                            <td>
+                                <div class="table-actions">
+                                    <a href="#" class="btn btn-edit">
+                                        ✏️ Editar
+                                    </a>
+
+                                    <a href="#" class="btn btn-delete"
+                                       aria-label="Excluir Djavan">
+                                        🗑️
+                                    </a>
+
+                                    <a href="#" class="btn btn-music">
+                                        🎵 Músicas
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <span class="no-photo">
+                                    Sem<br>foto
+                                </span>
+                            </td>
+
+                            <td>Marisa Monte</td>
+                            <td>MPB</td>
+                            <td>Brasil</td>
+
+                            <td>
+                                <div class="table-actions">
+                                    <a href="#" class="btn btn-edit">
+                                        ✏️ Editar
+                                    </a>
+
+                                    <a href="#" class="btn btn-delete"
+                                       aria-label="Excluir Marisa Monte">
+                                        🗑️
+                                    </a>
+
+                                    <a href="#" class="btn btn-music">
+                                        🎵 Músicas
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

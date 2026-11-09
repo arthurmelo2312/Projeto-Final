@@ -1,0 +1,1259 @@
+/* =============================================
+   SISTEMA MUSICAL: Folha de Estilos Principal
+   =============================================
+   Um único arquivo para TODAS as telas. Ele cresce a cada aula:
+   Aula 1: base, formulário, botões, login e menu
+   Aula 2: títulos, barra de título, cores dos botões, tabelas e filtros
+   Aula 3: formulário em grade, campo de foto e botão de músicas
+   Aula 4: url e textarea, campo "full", utilitários e celular
+   ============================================= */
+
+
+/* -----------------------------------------------
+   1. VARIÁVEIS E RESET [AULA 1]
+   ----------------------------------------------- */
+
+/* :root guarda as variáveis. Escrevemos o valor UMA vez e usamos
+   em todo lugar com var(--nome). Para mudar a identidade visual do
+   sistema, basta trocar as cores aqui. */
+
+:root {
+    --primary: #2c3e50;
+    --blue: #3498db;
+    --blue-dark: #2980b9;
+    --green: #27ae60;
+    --red: #e74c3c;
+    --red-dark: #c0392b;
+    --bg: #f0f2f5;
+    --surface: #ffffff;
+    --border: #dde1e7;
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+    --radius: 8px;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Reset: zera as margens que o navegador coloca sozinho.
+   box-sizing: border-box faz a largura já incluir padding e borda. */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* A página inteira: fonte, fundo e cor do texto. */
+
+body {
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+
+/* -----------------------------------------------
+   2. FORMULÁRIOS [AULA 1]
+   Base usada por TODAS as telas que têm <form>.
+   ----------------------------------------------- */
+
+/* Todo formulário vira um cartão branco com sombra. */
+
+form {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+}
+
+/* Espaço embaixo de cada grupo (rótulo + campo). */
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+/* display: block coloca o rótulo numa linha só dele, em cima do campo. */
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Os campos ocupam a largura toda e ganham borda fina.
+   textarea e select já ficam prontos para as próximas telas. */
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* :focus = quando a pessoa clica no campo. A borda fica azul. */
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+}
+
+
+/* -----------------------------------------------
+   3. BOTÕES [AULA 1, cores novas nas aulas 2 e 3]
+   ----------------------------------------------- */
+
+/* Seletor em grupo (vírgulas): TODOS os botões do sistema têm o
+   mesmo formato. Cada um ganha a sua cor mais abaixo. */
+
+.btn-primary,
+.btn-edit,
+.btn-delete,
+.btn-music,
+.btn-back,
+.btn-youtube {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.55rem 1.1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    line-height: 1.4;
+}
+
+/* Botão principal: azul. No hover escurece e sobe 1px. */
+
+.btn-primary {
+    padding: 0.65rem 1.4rem;
+    font-size: 0.95rem;
+    background: var(--blue);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--blue-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Voltar e Sair: escuro. */
+
+.btn-back {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-back:hover {
+    background: #1a252f;
+}
+
+
+/* -----------------------------------------------
+   5. TELA DE LOGIN [AULA 1]
+   ----------------------------------------------- */
+
+/* O body do login vira flex para centralizar o cartão:
+   justify-content = horizontal, align-items = vertical. */
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg);
+    padding: 1rem;
+}
+
+/* O cartão branco, com no máximo 400px de largura. */
+
+.login-card {
+    background: var(--surface);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* O form já é um cartão (seção 2). Dentro do login-card tiramos
+   o fundo e a sombra para não ficar "caixa dentro de caixa". */
+
+.login-card form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.login-header h1 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Seletor com espaço = "que está dentro de".
+   Só o botão do login ocupa a largura toda. */
+
+.login-card .btn-primary {
+    width: 100%;
+    margin-top: 0.25rem;
+}
+
+/* A caixinha com a dica das credenciais. */
+
+.login-hint {
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.login-hint code {
+    background: #e9ecef;
+    padding: 0.1rem 0.35rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+
+/* -----------------------------------------------
+   6. LAYOUT BASE [AULA 1]
+   O container de todas as telas, menos o login.
+   ----------------------------------------------- */
+
+/* Largura máxima de 1200px. margin: 0 auto centraliza a caixa. */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+
+/* -----------------------------------------------
+   7. MENU PRINCIPAL [AULA 1]
+   ----------------------------------------------- */
+
+/* flex-end empurra o botão Sair para a direita. */
+
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.35rem;
+}
+
+.page-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* A grade dos cards. auto-fit + minmax(240px, 1fr):
+   "coloque quantas colunas couberem, cada uma com no mínimo 240px".
+   No celular os cards descem sozinhos. */
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.menu-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--border);
+}
+
+/* Com o mouse em cima, o card sobe 4px e a sombra cresce. */
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.13);
+}
+
+/* display: block faz o link ocupar o card inteiro (tudo clicável). */
+
+.menu-card a {
+    display: block;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.menu-card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.menu-card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.35rem;
+}
+
+.menu-card-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+/* [AULA 3] Verde = ir para as músicas do artista. */
+.btn-music {
+    background: var(--green);
+    color: #fff;
+}
+
+.btn-music:hover {
+    background: #219a52;
+}
+
+/* [AULA 3] O subtítulo das tabelas dos cadastros. */
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 2rem 0 1rem;
+}
+
+/* [AULA 3] Seletor de atributo: só o input de arquivo.
+   A borda tracejada lembra "solte o arquivo aqui". */
+input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* [AULA 3] O texto de ajuda fica embaixo do campo, pequeno e cinza. */
+small {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* [AULA 3] 2 colunas iguais.
+   gap: 0 entre linhas e 2rem entre colunas. */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+}
+
+/* [AULA 3] Os botões abaixo do formulário, lado a lado. */
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    grid-column: 1 / -1;
+}
+
+/* [AULA 3, usada na Sprint 2] Mostra a foto já salva ao editar. */
+.current-image {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: var(--bg);
+    border-radius: 6px;
+}
+
+.current-image img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* Texto auxiliar da imagem atual. */
+.current-image small {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+/* Biblioteca musical */
+.list-page {
+    background:
+        radial-gradient(ellipse at top left, rgba(52, 152, 219, 0.1), transparent 38%),
+        var(--bg);
+}
+
+.list-page .container {
+    max-width: 1440px;
+    padding-top: 2rem;
+}
+
+.list-page .page-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    color: #fff;
+    background: linear-gradient(120deg, #243b55, #3498db);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+.list-page .page-header-bar h2 {
+    font-size: clamp(1.35rem, 3vw, 1.8rem);
+    line-height: 1.3;
+}
+
+.list-page .header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.list-page .btn-back {
+    background: rgba(15, 35, 55, 0.52);
+}
+
+.list-page .btn-back:hover {
+    background: rgba(15, 35, 55, 0.78);
+}
+
+.list-page .filters {
+    margin-bottom: 1.5rem;
+}
+
+.list-page .filter-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    margin: 0;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+}
+
+.list-page .filter-group {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.5fr) repeat(2, minmax(160px, 1fr));
+    gap: 1rem;
+    flex: 1;
+}
+
+.list-page .filter-item label {
+    margin-bottom: 0.45rem;
+}
+
+.list-page .filter-actions {
+    flex-shrink: 0;
+}
+
+
+/* ==========================================
+   SISTEMA MUSICAL - NOVO ARTISTA
+   ========================================== */
+
+
+/* 1. VARIÁVEIS */
+
+:root {
+    --primary: #2c3e50;
+    --blue: #3498db;
+    --blue-dark: #2980b9;
+    --green: #27ae60;
+    --green-dark: #219a52;
+    --red: #e74c3c;
+    --red-dark: #c0392b;
+
+    --bg: #f0f2f5;
+    --surface: #ffffff;
+    --border: #dde1e7;
+
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+    --radius: 8px;
+    --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+
+/* 2. RESET */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* 3. PÁGINA */
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+.site-topbar {
+    height: 34px;
+    background: #242536;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 20px 32px;
+}
+
+
+/* 4. CABEÇALHO */
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.page-heading h1 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.heading-divider {
+    width: 100%;
+    border-top: 1px solid var(--border);
+    margin-bottom: 14px;
+}
+
+
+/* 5. BOTÕES */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    padding: 8px 12px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-family: var(--font);
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.4;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:focus-visible {
+    outline: 3px solid rgba(52, 152, 219, 0.35);
+    outline-offset: 2px;
+}
+
+
+/* Voltar ao menu */
+
+.btn-back {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.btn-back:hover {
+    background: #1a252f;
+}
+
+
+/* Cadastrar */
+
+.btn-primary {
+    background: var(--blue);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: var(--blue-dark);
+}
+
+
+/* Editar */
+
+.btn-edit {
+    background: var(--blue);
+    color: #ffffff;
+}
+
+.btn-edit:hover {
+    background: var(--blue-dark);
+}
+
+
+/* Excluir */
+
+.btn-delete {
+    background: var(--red);
+    color: #ffffff;
+}
+
+.btn-delete:hover {
+    background: var(--red-dark);
+}
+
+
+/* Músicas */
+
+.btn-music {
+    background: var(--green);
+    color: #ffffff;
+}
+
+.btn-music:hover {
+    background: var(--green-dark);
+}
+
+
+/* 6. FORMULÁRIO */
+
+.artist-form {
+    background: var(--surface);
+    width: 100%;
+
+    padding: 24px;
+    margin: 0;
+
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+
+/* Duas colunas de mesmo tamanho */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 0;
+}
+
+
+/* Grupo de campo e rótulo */
+
+.form-group {
+    min-width: 0;
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+
+/* Asterisco obrigatório */
+
+.required {
+    color: var(--red);
+}
+
+
+/* Campos de texto */
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+
+    padding: 6px 8px;
+
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    font-family: var(--font);
+    font-size: 0.75rem;
+    color: var(--text);
+
+    background: var(--surface);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Campo de foto */
+
+.form-group input[type="file"] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+
+    padding: 4px;
+
+    border: 1px dashed var(--border);
+    border-radius: 5px;
+
+    font-family: var(--font);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+
+    background: var(--surface);
+    cursor: pointer;
+}
+
+
+/* Botão interno do seletor de arquivo */
+
+.form-group input[type="file"]::file-selector-button {
+    padding: 3px 5px;
+    margin-right: 4px;
+
+    border: 1px solid var(--border);
+    border-radius: 3px;
+
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+
+    cursor: pointer;
+}
+
+
+/* Foco nos campos */
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.15);
+}
+
+
+/* Texto de ajuda */
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+
+/* Botão abaixo dos campos */
+
+.form-actions {
+    grid-column: 1 / -1;
+    margin-top: 3px;
+}
+
+.form-actions .btn {
+    padding: 7px 13px;
+    font-size: 0.76rem;
+}
+
+
+/* 7. LISTA DE ARTISTAS */
+
+.artists-section {
+    margin-top: 20px;
+}
+
+.artists-section h2 {
+    margin-bottom: 10px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+
+/* 8. TABELA */
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 5px;
+    box-shadow: var(--shadow-sm);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    background: var(--surface);
+}
+
+
+/* Largura das colunas */
+
+th:nth-child(1),
+td:nth-child(1) {
+    width: 12%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 20%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 14%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 12%;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 42%;
+}
+
+
+/* Cabeçalho da tabela */
+
+thead {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+thead th {
+    padding: 9px 10px;
+
+    font-size: 0.64rem;
+    font-weight: 600;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+
+/* Células */
+
+tbody td {
+    padding: 8px 10px;
+
+    font-size: 0.72rem;
+    text-align: left;
+    vertical-align: middle;
+
+    overflow-wrap: break-word;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+
+/* Caixa "Sem foto" */
+
+.no-photo {
+    display: inline-flex;
+    width: 36px;
+    min-height: 36px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px;
+
+    border-radius: 4px;
+    background: #eef1f5;
+
+    color: var(--text-muted);
+    font-size: 0.55rem;
+    text-align: center;
+    line-height: 1.3;
+}
+
+
+/* Botões da tabela */
+
+.table-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 4px;
+}
+
+.table-actions .btn {
+    padding: 5px 6px;
+    gap: 3px;
+
+    font-size: 0.65rem;
+    line-height: 1.3;
+}
+
+
+/* 9. CELULARES */
+
+@media (max-width: 460px) {
+
+    .container {
+        padding: 14px 12px 24px;
+    }
+
+    .page-heading {
+        gap: 8px;
+    }
+
+    .page-heading h1 {
+        font-size: 1rem;
+    }
+
+    .btn-back {
+        padding: 7px 8px;
+        font-size: 0.68rem;
+    }
+
+    .artist-form {
+        padding: 16px 12px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        grid-column: 1;
+    }
+
+    .artists-section {
+        margin-top: 18px;
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 490px;
+    }
+}
+
+/* Cadastro de artistas */
+.artist-page {
+    background:
+        radial-gradient(ellipse at 10% 0, rgba(52, 152, 219, 0.12), transparent 34rem),
+        var(--bg);
+    color: var(--text);
+}
+
+.artist-page .site-topbar {
+    height: 7px;
+    background: linear-gradient(90deg, var(--blue), var(--green));
+}
+
+.artist-page .container {
+    max-width: 1080px;
+    padding: 2rem 1.5rem 3rem;
+}
+
+.artist-page .page-heading {
+    margin-bottom: 1.25rem;
+}
+
+.artist-page .page-heading h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.03em;
+}
+
+.artist-page .heading-divider {
+    margin-bottom: 1.5rem;
+    border-color: rgba(44, 62, 80, 0.12);
+}
+
+.artist-page .artist-form {
+    padding: clamp(1.25rem, 4vw, 2rem);
+    border: 1px solid rgba(44, 62, 80, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(32, 48, 66, 0.08);
+}
+
+.artist-page .form-grid {
+    column-gap: 1.5rem;
+    row-gap: 0.25rem;
+}
+
+.artist-page .form-group {
+    margin-bottom: 1rem;
+}
+
+.artist-page .form-group label {
+    margin-bottom: 0.45rem;
+    font-size: 0.9rem;
+}
+
+.artist-page .form-group input[type="text"],
+.artist-page .form-group input[type="password"],
+.artist-page .form-group input[type="url"],
+.artist-page .form-group textarea,
+.artist-page .form-group select {
+    min-height: 44px;
+    padding: 0.7rem 0.8rem;
+    border-color: #d7dee7;
+    border-radius: 7px;
+    font-size: 0.95rem;
+}
+
+.artist-page .form-group input::placeholder {
+    color: #98a2ad;
+}
+
+.artist-page .form-group input[type="file"] {
+    min-height: 44px;
+    padding: 0.45rem;
+    border-color: #d7dee7;
+    border-radius: 7px;
+    font-size: 0.85rem;
+}
+
+.artist-page .form-group input[type="file"]::file-selector-button {
+    padding: 0.45rem 0.7rem;
+    margin-right: 0.6rem;
+    border: 0;
+    border-radius: 5px;
+    background: #eaf3fb;
+    color: var(--primary);
+    font: inherit;
+    font-weight: 600;
+}
+
+.artist-page .form-group small {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+}
+
+.artist-page .form-actions {
+    margin-top: 0.35rem;
+}
+
+.artist-page .form-actions .btn {
+    min-height: 44px;
+    padding: 0.7rem 1.2rem;
+    border-radius: 7px;
+    font-size: 0.9rem;
+}
+
+.artist-page .btn {
+    border-radius: 7px;
+}
+
+.artist-page .btn:focus-visible,
+.artist-page .form-group input:focus-visible,
+.artist-page .form-group select:focus-visible {
+    outline: 3px solid rgba(52, 152, 219, 0.3);
+    outline-offset: 2px;
+}
+
+.artist-page .artists-section {
+    margin-top: 2rem;
+}
+
+.artist-page .artists-section h2 {
+    margin-bottom: 0.9rem;
+    font-size: 1.2rem;
+}
+
+.artist-page .table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.artist-page table {
+    min-width: 760px;
+    table-layout: auto;
+}
+
+.artist-page th:nth-child(1),
+.artist-page td:nth-child(1) {
+    width: 12%;
+}
+
+.artist-page th:nth-child(2),
+.artist-page td:nth-child(2) {
+    width: 22%;
+}
+
+.artist-page th:nth-child(3),
+.artist-page td:nth-child(3) {
+    width: 16%;
+}
+
+.artist-page th:nth-child(4),
+.artist-page td:nth-child(4) {
+    width: 16%;
+}
+
+.artist-page th:nth-child(5),
+.artist-page td:nth-child(5) {
+    width: 34%;
+}
+
+.artist-page thead th {
+    padding: 0.9rem 1rem;
+    font-size: 0.75rem;
+}
+
+.artist-page tbody td {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+}
+
+.artist-page .no-photo {
+    width: 56px;
+    min-height: 56px;
+    border-radius: 7px;
+    font-size: 0.7rem;
+}
+
+.artist-page .table-actions {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.artist-page .table-actions .btn {
+    min-height: 36px;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.78rem;
+}
+
+@media (max-width: 600px) {
+    .artist-page .container {
+        padding: 1.25rem 1rem 2rem;
+    }
+
+    .artist-page .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .artist-page .page-heading .btn-back {
+        align-self: flex-start;
+    }
+
+    .artist-page .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .artist-page .form-actions {
+        grid-column: 1;
+    }
+
+    .artist-page .form-actions .btn {
+        width: 100%;
+    }
+}
