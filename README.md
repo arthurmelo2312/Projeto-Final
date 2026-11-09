@@ -35,41 +35,6 @@ Este projeto foi desenvolvido para cadastrar artistas e músicas, organizar uma 
 4. Verifique se a tabela `usuarios` foi criada corretamente.
 5. Ajuste as credenciais no arquivo `conexao.php` caso necessário.
 
-## Usuário padrão
-
-O sistema já inclui um usuário padrão para acesso inicial:
-
-- Usuário: `admin`
-- Senha: `123`
-
-A senha é armazenada em hash seguro com `password_hash`, não em texto puro.
-
-## Como executar
-
-1. Coloque a pasta do projeto dentro do diretório do servidor local, por exemplo:
-
-```text
-C:\xampp\htdocs\artistas-musicas
-```
-
-2. Acesse no navegador:
-
-```text
-http://localhost/artistas-musicas/login.php
-```
-
-3. Faça login com as credenciais padrão.
-
-## Fluxo do sistema
-
-- `login.php` → autenticação do usuário
-- `valida_sessao.php` → bloqueia acesso sem login
-- `index.php` → menu principal
-- `cadastro_artista.php` → cadastro e gerenciamento de artistas
-- `cadastro_musica.php` → cadastro e gerenciamento de músicas
-- `listagem_musicas.php` → visualização da biblioteca musical
-- `logout.php` → encerra a sessão
-
 ## Observações importantes
 
 - A pasta `img` é criada automaticamente pelo arquivo `conexao.php`.
