@@ -35,15 +35,6 @@ Este projeto foi desenvolvido para cadastrar artistas e músicas, organizar uma 
 4. Verifique se a tabela `usuarios` foi criada corretamente.
 5. Ajuste as credenciais no arquivo `conexao.php` caso necessário.
 
-Exemplo de configuração:
-
-```php
-$servername = "localhost";
-$username   = "root";
-$password   = "sua_senha";
-$dbname     = "sistema_musical_v2";
-```
-
 ## Usuário padrão
 
 O sistema já inclui um usuário padrão para acesso inicial:
